@@ -413,17 +413,16 @@ async def create_upload_file(businessName: Annotated[str, Form()], annualReport:
             query_engine = index.as_query_engine()
             print('query engine created')
             
-            questions = get_test_questions()
+            questions = get_questions()
             
             print('populate questions completed')
             
-            template = get_test_template()
+            template = get_template()
             
             print('populate template completed')
             answers = []
             for question in questions:
                 response = query_engine.query(question)
-                print(response)
                 html = markdown.markdown(str(response))
                 answers.append(html)
 
